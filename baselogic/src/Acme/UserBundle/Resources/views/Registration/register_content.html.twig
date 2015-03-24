@@ -1,0 +1,76 @@
+{% form_theme form theme %}
+
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register register_content" id="dealerReg">
+ <div id="fos_user_registration_form">
+   <div class="row">
+  
+    {{ form_widget(form._token) }}
+</div>
+
+
+
+    <div class="row">
+    {{ form_label(form.email) }}
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email,{'attr': {'class': 'register_input_dealer rounded inseshadow required '},'required':false}) }}
+</div>
+   <div class="row">
+    {{ form_label(form.password) }}
+    {{ form_errors(form.password) }}
+    {{ form_widget(form.password,{'attr': {'class': 'required rounded register_input_dealer inseshadow'},'required':false }) }}
+</div>
+ <div class="row">
+    {{ form_label(form.plain_password) }}
+    {{ form_errors(form.plain_password) }}
+    {{ form_widget(form.plain_password,{'attr': {'class': 'required rounded register_input_dealer inseshadow'},'required':false }) }}
+</div>
+
+ <div class="row">
+    {{ form_label(form.first_name) }}
+    {{ form_errors(form.first_name) }}
+    {{ form_widget(form.first_name,{'attr': {'class': 'required rounded register_input_dealer inseshadow'},'required':false }) }}
+</div>
+	 <div class="row">
+    {{ form_label(form.last_name) }}
+    {{ form_errors(form.last_name) }}
+    {{ form_widget(form.last_name,{'attr': {'class': 'required rounded register_input_dealer inseshadow'},'required':false }) }}
+</div>
+
+<div class="row">
+  <label for="fos_user_registration_form_address">Address:</label>
+    {{ form_errors(form.address) }}
+    {{ form_widget(form.address,{'attr': {'class': 'required rounded register_input_dealer inseshadow'},'required':false }) }}
+	 
+</div>
+
+<div class="row">
+    {{ form_label(form.phone) }}
+    {{ form_errors(form.phone) }}
+    {#{{ form_widget(form.phone) }}#}
+	{{ form_widget(form.phone,{'attr': {'class': 'register_input_dealer rounded required inseshadow'},'required':false }) }}
+</div>
+<br />
+
+	{% for item2 in result %}
+<div class="row"><label>{{ item2.name }}{{ ':'}}</label>
+<label>Multiplier</label>
+<input type="text" name="{{item2.getManId() }}" class="smallinptNarkup rounded inseshadow required" id="multId{{item2.getManId() }}">
+
+<label></label>
+
+<label>Markup</label>
+<input type="text" name="markup{{item2.getManId()}}" class="smallinptNarkup rounded inseshadow required" id="markId{{item2.getManId() }}">
+
+
+
+</div>
+
+{% endfor %}
+<div id="mulError" style="color:red"></div>
+    <div class="row addtm">
+        <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}"  class="registerBtnUser" onclick="validateMultipler()" formnovalidate/>
+    </div>
+	<div class="clear"></div>
+
+	</div>
+</form>

@@ -1,0 +1,118 @@
+# app/nfig/routing.yml
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    pattern:  /home
+    defaults: { _controller: UserBundle:Registration:getStarted }
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+_get_started:
+    pattern:  /home
+    defaults: { _controller: UserBundle:Registration:getStarted }
+
+_add_window:
+    pattern:  /add
+    defaults: { _controller: UserBundle:SearchWindow:addWindow }
+
+customer_registration:
+    pattern:  /customer_register
+    defaults: { _controller: UserBundle:Registration:customerRegistration }
+
+my_app_greeting:
+    pattern:  /tset
+    defaults: { _controller: UserBundle:SearchWindow:greeting }
+
+my_app_greetin:
+    pattern:  /tt
+    defaults: { _controller: UserBundle:SearchWindow:tt }
+
+_save_window_style:
+    pattern:  /windowStyle
+    defaults: { _controller: UserBundle:SearchWindow:saveWindow }
+
+_save_zipcode:
+    pattern:  /quote
+    defaults: { _controller: UserBundle:SearchWindow:saveZipcode }
+
+_add_to_cart:
+    pattern:  /cartDisplay
+    defaults: { _controller: UserBundle:SearchWindow:cartDisplay }
+
+_add_to_cart_window_wise:
+    pattern:  /cartDisplayWindowWise
+    defaults: { _controller: UserBundle:SearchWindow:cartDisplayWindow }
+
+_confirm_order:
+    pattern:  /confirmOrder
+    defaults: { _controller: UserBundle:SearchWindow:confirmOrder }
+
+_confirm_order_window_wise:
+    pattern:  /confirmOrderWindowwise
+    defaults: { _controller: UserBundle:SearchWindow:confirmOrderWindowwise }
+
+user_registration:
+    pattern:  /user_register
+    defaults: { _controller: UserBundle:Registration:userRegistration }
+
+_paypal:
+    pattern:  /payment
+    defaults: { _controller: UserBundle:Registration:paypal }
+
+_business:
+    pattern:  /paymentSuccess
+    defaults: { _controller: UserBundle:Registration:businessSuccess }
+
+_cancel:
+    pattern:  /paymentCancel
+    defaults: { _controller: UserBundle:Registration:cancelPayment }
+
+
+_notify_url:
+    pattern:  /notifyUrl
+    defaults: { _controller: UserBundle:Registration:ipn }
+
+_autopopulate_user_reg:
+    pattern:  /autopopulate
+    defaults: { _controller: UserBundle:SearchWindow:autopopulateRegForm }
+
+_window_wise_display:
+    pattern:  /window_wise
+    defaults: { _controller: UserBundle:SearchWindow:windowWiseQuotes }
+
+_zip_popup:
+    pattern:  /zipcode
+    defaults: { _controller: UserBundle:SearchWindow:showZipcodeEdit }
+
+_twitter_login:
+    pattern:  /twitterLoginOauth
+    defaults: { _controller: UserBundle:Registration:oauth }
+
+customer_login_check:
+    pattern:  /customer_login
+    defaults: { _controller: UserBundle:SearchWindow:customerCheck }
+
+get_token:
+    pattern:  /token
+    defaults: { _controller: UserBundle:Registration:getToken }
+
+_twitter_sign_in:
+    pattern:  /twitterSignIn
+    defaults: { _controller: UserBundle:Registration:twitterSignIn }
+
+_twitter_return:
+    pattern:  /twitterReturn
+    defaults: { _controller: UserBundle:Registration:twitterReturn }

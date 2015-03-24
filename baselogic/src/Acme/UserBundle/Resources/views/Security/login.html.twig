@@ -1,0 +1,70 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+<script>
+function removeUsernamelabel()
+{
+if(document.getElementById('username').value =='Email')
+{
+document.getElementById('username').value='';
+return false;
+}
+
+if(document.getElementById('username').value =='')
+{
+document.getElementById('username').value='Email';
+return false;
+}
+}
+
+
+function removePasswordlabel()
+{
+if(document.getElementById('password').value =='password')
+{
+document.getElementById('password').value='';
+return false;
+}
+
+if(document.getElementById('password').value =='')
+{
+document.getElementById('password').value='password';
+return false;
+}
+}
+</script>
+{% if last_username %} 
+ {% set user_value=last_username %}
+ {% else %}
+ {% set user_value='Email' %} 
+ {% endif %}
+ 
+				<div class="login_boxcontent">
+                	<div class="loginbox">
+                    	<h2 class="login_heading">Login <span>to begin quoting.</span></h2>
+						  <div class="main_loginbox">
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+<div>
+    
+    <input type="text" class="login_input"  id="username" name="_username" value="{{ user_value}}" onclick="removeUsernamelabel()" onBlur="removeUsernamelabel()"  />
+</div>
+<div>
+ 
+    <input type="password" class="login_input"  id="password" value="password" name="_password"  onclick="removePasswordlabel()" onBlur="removePasswordlabel()" />
+</div>
+
+    <input type="submit" id="_submit" name="_submit" class="login_btn" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>
+
+      
+                        <span class="register">Need an account? <a href="register">Register here</a></span>
+                        <div class="clear"></div>
+                      </div>
+                        <div class="ref_loginbox"><img src="{{ asset('bundles/userbundle/images/loginbox_ref.png') }}" width="473" height="74" alt="img" /></div>
+                    </div>
+                </div>
+{% endblock fos_user_content %}
